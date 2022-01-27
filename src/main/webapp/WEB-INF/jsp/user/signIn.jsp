@@ -16,14 +16,15 @@
 <div id="#wrap">
   <c:import url="/WEB-INF/jsp/include/header.jsp"/>
   <section class="d-flex justify-content-center">
+  <img src="/static/img/instalogo.png" class="mt-5 mr-5" width="300" height="300">
   <form id="loginForm">
-  <div class="login-box my-5">
-     <div class="display-4 text-center">로그인</div>
+  <div class="login-box my-5 border rounded p-5">
+     <div class="display-4 text-primary text-center ">Honstagram</div>
      <!--  아이디, 패스워드, 패스워드 확인, 이름, 이메일 -->
      <input type="text" class="form-control mt-3" placeholder="아이디" id="loginIdInput">
      <input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput">
      
-     <button type="submit"  class="btn btn-info btn-block mt-3">로그인</button>
+     <button type="submit"  class="btn btn-primary btn-block mt-3">로그인</button>
      <div class="text-center">
 		<a href="/user/signup_view">회원가입</a>
 	 </div>
@@ -43,6 +44,7 @@
 	   
 	   $("#loginForm").on("submit",function(e) {
 		   e.preventDefault();
+		   alert();
 		   
 		   var loginId = $("#loginIdInput").val();
 		   var password = $("#passwordInput").val();
@@ -65,7 +67,7 @@
 					  location.href="/post/list_view";
 					  alert("로그인 성공");
 				   }else{
-					   alert("아이디 혹은 비밀번호를 확인하세요")
+					   alert("아이디 혹은 비밀번호를 확인하세요");
 				   }
 			   }
 			   
@@ -77,6 +79,7 @@
 	   });
 	   
    });
+   </script>
    
 
 </body>

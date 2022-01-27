@@ -18,12 +18,12 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		<section class="d-flex justify-content-center">
 			<div class="signup-box my-5">
-			<input type="text" class="form-control mt-3" placeholder="아이디" id="loginIdInput">
-			<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput">
+			<div class="d-flex"><input type="text" class="form-control mt-3" placeholder="아이디" id="loginIdInput"><button type="button" class="ml-3 mt-3 btn btn-sm  btn-success" id="duplicateBtn">중복확인</button></div>
+			<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput"> 
 			<input type="password" class="form-control mt-3" placeholder="비밀번호 확인" id="passwordConfirmInput">
 			 <input type="text" class="form-control mt-3" placeholder="이름" id="nameInput">
 			  <input type="text" class="form-control mt-3" placeholder="이메일" id="emailInput">
-			  <button type="button" id="signupBtn" class="btn btn-info btn-block mt-3">회원가입</button>
+			  <button type="button" id="signupBtn" class="btn btn-primary btn-block mt-3">회원가입</button>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
@@ -87,6 +87,39 @@
 			 });
 			 
 		 });
+		 
+		 $("#duplicateBtn").on("click",function(){
+			  
+			  let loginId = $("#loginIdInput").val();
+			  
+			  
+			  if(loginId==""){
+				  alert("아이디를 입력하세요");
+				  return;
+			  }
+			
+			  $.ajax({
+				  type:"post",
+				  url:"/user/duplicate",
+				  data:{"loginId":loginId},
+				  success:function(data){
+					  //{isDuplicate: true}
+					  if(data.isDuplicate=="true"){
+					  alert("중복된 아이디입니다");
+		
+					  }else{
+					  alert("사용가능한 아이디입니다");
+					  }
+					  
+				  },
+				  error:function(){
+					  alert("에러발생");
+					  
+				  }
+			  });
+			  
+		  });
+		  
 		 
 		 
 		 
