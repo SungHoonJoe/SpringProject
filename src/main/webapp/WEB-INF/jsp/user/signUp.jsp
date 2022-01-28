@@ -19,6 +19,8 @@
 		<section class="d-flex justify-content-center">
 			<div class="signup-box my-5">
 			<div class="d-flex"><input type="text" class="form-control mt-3" placeholder="아이디" id="loginIdInput"><button type="button" class="ml-3 mt-3 btn btn-sm  btn-success" id="duplicateBtn">중복확인</button></div>
+			<div id="duplicateDiv" class="d-none"><small class="text-danger">중복된 ID 입니다.</small></div>
+			<div id="noneDuplicateDiv" class="d-none"><small class="text-success">사용 가능한 ID 입니다.</small></div>
 			<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput"> 
 			<input type="password" class="form-control mt-3" placeholder="비밀번호 확인" id="passwordConfirmInput">
 			 <input type="text" class="form-control mt-3" placeholder="이름" id="nameInput">
@@ -35,6 +37,17 @@
 	
 	<script>
 	 $(document).ready(function(){
+		 
+		 var isIdCheck = false;
+			var isDuplicateId = true;
+			
+			// 아이디에 입력이 있을경우 중복체크 상태를 초기화 한다
+			$("#loginIdInput").on("input", function() {
+				$("#duplicateDiv").addClass("d-none");
+				$("#noneDuplicateDiv").addClass("d-none");
+				isIdCheck = false;
+				isDuplicateId = true;
+			});
 		 
 		 $("#signupBtn").on("click",function() {
 			 
@@ -65,6 +78,17 @@
 				 alert("이메일을 입력하시오");
 				 return;
 			 }
+			 
+			// 중복체크 했는지?
+				if(isIdCheck == false) {
+					alert("중복체크를 진행하세요");
+					return ;
+				}
+						
+				// 중복이 되었는지 안되었는지?
+				if(isDuplicate == true) {
+					alert("아이디가 중복되었습니다.");
+					return ;
 			 
 			 $.ajax({
 				 
@@ -104,12 +128,23 @@
 				  data:{"loginId":loginId},
 				  success:function(data){
 					  //{isDuplicate: true}
+					    isIdCheck = true;
 					  if(data.isDuplicate=="true"){
 					  alert("중복된 아이디입니다");
+					  isDuplicate = true;
+						$("#duplicateDiv").removeClass("d-none");
+						$("#noneDuplicateDiv").addClass("d-none");
 		
 					  }else{
 					  alert("사용가능한 아이디입니다");
+					  isDuplicate = false;
+						$("#duplicateDiv").addClass("d-none");
+						$("#noneDuplicateDiv").removeClass("d-none");
 					  }
+					  
+					
+						
+						
 					  
 				  },
 				  error:function(){

@@ -71,7 +71,7 @@ public class UserRestController {
 		
 	}
 	
-	@PostMapping("/user/duplicate")
+	@PostMapping("/duplicate")
 	public Map<String,String> duplicateId(@RequestParam("loginId") String loginId){
     Map<String,String> result = new HashMap<>();
 		

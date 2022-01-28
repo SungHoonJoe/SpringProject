@@ -29,7 +29,7 @@ public class UserBO {
 	}
 	
 	public boolean isDuplicateId(String loginId) {
-		int count =  favoriteDAO.selectCountAddress(address);
+		int count =  userDAO.selectCountId(loginId);
 		
 		if(count == 0) {
 			return false;
