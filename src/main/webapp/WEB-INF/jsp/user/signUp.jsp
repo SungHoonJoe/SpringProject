@@ -89,6 +89,7 @@
 				if(isDuplicate == true) {
 					alert("아이디가 중복되었습니다.");
 					return ;
+				}
 			 
 			 $.ajax({
 				 
