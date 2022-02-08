@@ -70,6 +70,8 @@
         			 contentType:false, // 파일 업로드 필수
         			 success:function(data){
         				if(data.result=="success"){
+        					
+        					
         					location.href="/post/list_view";
         					
         				}else{

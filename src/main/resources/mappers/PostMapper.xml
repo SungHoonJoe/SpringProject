@@ -7,8 +7,9 @@
 	<insert id="insertPost" parameterType="map">
 		INSERT INTO `post` 
 		(
+		    
 			`userId`
-			, `subject`
+			,`subject`
 			, `content`
 			, `imagePath`
 			, `createdAt`

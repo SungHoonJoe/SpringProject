@@ -53,4 +53,5 @@ public class PostController {
 		return "post/detailView";
 	}
 
+
 }
