@@ -19,7 +19,7 @@
 		<section class="d-flex justify-content-center">
 			<div class="w-75 my-5">
 				<h1 class="text-center">게시글</h1>
-				<table class="table table-striped">
+				<table class="table text-center table-striped">
 					<thead>
 						<tr>
 							<th>No.</th>
