@@ -17,12 +17,12 @@ public class PostBO {
 	private PostDAO postDAO;
 	
 	
-	public int addPost(int userId, String subject, String content, MultipartFile file) {
+	public int addPost(int userId, String userName, String content, MultipartFile file) {
 		
 		// 파일을 컴퓨터(서버)에 저장하고, 클라이언트(브라우저)가 접근 가능한 주소를 만들어 낸다.
 		String filePath = FileManagerService.saveFile(userId, file);
 		
-		return postDAO.insertPost(userId, subject, content,filePath);
+		return postDAO.insertPost(userId, userName, content,filePath);
 	}
 	
 	public List<Post> getPostList(int userId) {

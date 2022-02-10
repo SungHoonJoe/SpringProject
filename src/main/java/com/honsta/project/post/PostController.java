@@ -24,6 +24,11 @@ public class PostController {
 	@Autowired
 	private PostBO postBO;
 	
+	@GetMapping("/timeline")
+	public String timeline() {
+		return "post/timeline";
+	}
+	
 	@GetMapping("/list_view")
 	public String listView(HttpServletRequest request, Model model) {
 		
