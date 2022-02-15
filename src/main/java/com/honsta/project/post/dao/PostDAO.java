@@ -14,12 +14,12 @@ public interface PostDAO {
 	public int insertPost(
 			@Param("userId") int userId, 
 			@Param("userName") String subject, 
-			@Param("imagePath") String imagePath,
-			@Param("content") String content
+			@Param("content") String content,
+			@Param("imagePath") String imagePath
 			
 			);
 	
-	public List<Post> selectPostList(@Param("userId") int userId);
+	public List<Post> selectPostList();
 	
 	public Post selectPost(@Param("postId") int postId);
 	

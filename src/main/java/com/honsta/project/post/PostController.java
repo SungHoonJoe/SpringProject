@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.honsta.project.post.bo.PostBO;
 import com.honsta.project.post.model.Post;
+import com.honsta.project.post.model.PostDetail;
 
 
 
@@ -25,22 +26,18 @@ public class PostController {
 	private PostBO postBO;
 	
 	@GetMapping("/timeline")
-	public String timeline() {
+	public String timeline(Model model,HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int userId  = (Integer) session.getAttribute("userId");
+		List<PostDetail> postList = postBO.getPostList(userId);
+		
+		
+		
+		model.addAttribute("postList",postList);
 		return "post/timeline";
 	}
 	
-	@GetMapping("/list_view")
-	public String listView(HttpServletRequest request, Model model) {
-		
-		// 로그인한 사용자의 글만 가져온다
-		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
-		
-		List<Post> postlist = postBO.getPostList(userId);
-		model.addAttribute("postList", postlist);
-		
-		return "post/listView";
-	}
 	
 	@GetMapping("/create_view")
 	public String createView() {

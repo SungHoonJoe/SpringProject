@@ -8,6 +8,10 @@
 	
 }
 
+header {
+	height:40px;
+}
+
 .signup-box{
 	width: 400px;
 }
@@ -20,3 +24,47 @@
 	font-size: 25px;
 	color: blue;
 }
+
+footer {
+	height:50px;
+}
+
+
+.upload-box {
+	
+	border: solid 1px #cccccc;	
+	border-radius: 5px;
+}
+
+
+.non-resize {
+	resize:none;		
+}
+
+.more-icon {
+	font-size:18px;	
+}
+
+.likeBtn:hover {
+	text-decoration:none;
+}
+
+.heart-icon {
+	font-size:20px;
+}
+
+
+.big-icon {
+	font-size:25px;
+}
+
+.middle-size {
+	font-size:15px;
+}
+
+.image-upload-icon {
+	font-size:20px;
+	color:black;
+}
+
+
